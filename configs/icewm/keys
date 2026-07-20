@@ -1,0 +1,29 @@
+# hackOS :: IceWM keybindings
+# Sintaxis: key "Modificadores+Tecla" comando...
+
+key "Super+t"          xterm
+key "Super+Return"     xterm
+key "Super+e"           pcmanfm
+key "Super+d"            rofi -show drun
+key "Super+Tab"         rofi -show window
+key "Super+space"       rofi -show run
+key "Super+l"           i3lock-fancy || xtrlock
+key "Super+q"            icesh close
+key "Super+f"                icesh fullscreen
+key "Super+Shift+q"     icewm-session --logout
+key "Ctrl+Alt+t"          xterm
+key "Ctrl+Alt+l"          xtrlock
+key "Print"                       scrot ~/Pictures/hackos-shot-%Y%m%d-%H%M%S.png
+key "Super+Print"          scrot -s ~/Pictures/hackos-shot-%Y%m%d-%H%M%S.png
+key "Super+1"                icesh workspace 0
+key "Super+2"                icesh workspace 1
+key "Super+3"                icesh workspace 2
+key "Super+4"                icesh workspace 3
+key "Super+5"                icesh workspace 4
+key "Super+Left"           icesh workspace -1
+key "Super+Right"          icesh workspace +1
+key "XF86AudioRaiseVolume" amixer set Master 5%+
+key "XF86AudioLowerVolume" amixer set Master 5%-
+key "XF86AudioMute"        amixer set Master toggle
+key "XF86MonBrightnessUp"    brightnessctl set +10%
+key "XF86MonBrightnessDown"  brightnessctl set 10%-

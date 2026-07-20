@@ -1,0 +1,13 @@
+# hackOS :: IceWM winoptions
+Rofi.noFocusOnAppRaise: 0
+Rofi.tray: ignore
+Rofi.dTitleBar: 0
+Rofi.dBorder: 0
+
+Dunst.tray: ignore
+Dunst.dTitleBar: 0
+Dunst.dBorder: 0
+Dunst.doNotCover: 1
+
+Picom.tray: ignore
+Picom.dTitleBar: 0

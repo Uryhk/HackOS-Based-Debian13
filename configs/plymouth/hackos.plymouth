@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=hackOS
+Description=Boot splash minimalista de hackOS: logo + spinner sobre negro
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/hackos
+ScriptFile=/usr/share/plymouth/themes/hackos/hackos.script

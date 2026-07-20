@@ -1,0 +1,7 @@
+# hackOS :: IceWM quick-launch toolbar
+prog "Terminal" utilities-terminal xterm
+prog "Files" system-file-manager pcmanfm
+prog "Browser" web-browser librewolf
+prog "Editor" accessories-text-editor pluma
+prog "Rofi" system-search rofi -show drun
+prog "Tor Browser" security-high torbrowser-launcher

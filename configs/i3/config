@@ -1,0 +1,107 @@
+# hackOS :: i3 config
+
+set $mod Mod4
+font pango:JetBrainsMono Nerd Font 10
+
+# --- Apps -------------------------------------------------------------
+bindsym $mod+t exec xterm
+bindsym $mod+Return exec xterm
+bindsym $mod+e exec pcmanfm
+bindsym $mod+w exec librewolf
+bindsym $mod+c exec pluma
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+space exec rofi -show run
+bindsym $mod+Tab exec rofi -show window
+bindsym $mod+Shift+l exec xtrlock
+
+# --- Ventanas -----------------------------------------------------------
+bindsym $mod+Shift+q kill
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+i focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+l move right
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# --- Workspaces -----------------------------------------------------------
+set $ws1 "1:Term"
+set $ws2 "2:Web"
+set $ws3 "3:Code"
+set $ws4 "4:Files"
+set $ws5 "5:Sys"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Salir de i3?' -B 'Si' 'i3-msg exit'"
+
+# --- Estética -------------------------------------------------------------
+gaps inner 8
+gaps outer 4
+default_border pixel 2
+default_floating_border pixel 2
+
+# class                 border   backgr.  text     indicator  child_border
+client.focused           #EA0057 #101418  #EA0057  #EA0057    #EA0057
+client.unfocused         #181c20 #101418  #8a9099  #181c20    #181c20
+client.focused_inactive  #181c20 #101418  #8a9099  #181c20    #181c20
+client.urgent             #ff5555 #101418  #ffffff  #ff5555    #ff5555
+
+# --- Barra ------------------------------------------------------------
+bar {
+    status_command i3status
+    position top
+    font pango:JetBrainsMono Nerd Font 10
+    colors {
+        background #101418
+        statusline #d6dbe0
+        separator  #181c20
+        focused_workspace  #EA0057 #101418 #EA0057
+        active_workspace   #181c20 #101418 #d6dbe0
+        inactive_workspace #101418 #101418 #8a9099
+        urgent_workspace   #ff5555 #101418 #ffffff
+    }
+}
+
+# --- Autoinicio -------------------------------------------------------
+exec --no-startup-id picom -b --config ~/.icewm/picom.conf
+exec --no-startup-id nm-applet
+exec --no-startup-id feh --bg-fill --randomize ~/Pictures/hackos-wallpapers/*
+exec --no-startup-id pasystray
+exec --no-startup-id dunst
+
+# --- Volumen / brillo ---------------------------------------------------
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Redimensionar
+mode "resize" {
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym i resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"

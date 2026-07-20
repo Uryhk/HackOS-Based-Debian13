@@ -1,0 +1,48 @@
+// hackOS :: Plymouth boot splash — simple: negro, logo centrado, puntos girando
+
+Window.SetBackgroundTopColor(0.04, 0.05, 0.06);
+Window.SetBackgroundBottomColor(0.02, 0.02, 0.02);
+
+logo.image = Image("logo.png");
+logo.sprite = Sprite(logo.image);
+logo.sprite.SetX(Window.GetX() + Window.GetWidth()  / 2 - logo.image.GetWidth()  / 2);
+logo.sprite.SetY(Window.GetY() + Window.GetHeight() / 2 - logo.image.GetHeight() / 2 - 60);
+
+// Spinner simple: 8 puntos en círculo, uno se resalta por vez (rosa de marca)
+dot_count = 8;
+radius = 46;
+cx = Window.GetX() + Window.GetWidth()  / 2;
+cy = Window.GetY() + Window.GetHeight() / 2 + logo.image.GetHeight() / 2 + 30;
+
+for (i = 0; i < dot_count; i++) {
+    angle = i * (2 * 3.14159 / dot_count);
+    dot[i].image = Image.Text("●", 1, 0.02, 0.35, 1, "Sans 10");
+    dot[i].sprite = Sprite(dot[i].image);
+    dot[i].sprite.SetX(cx + radius * Math.Cos(angle) - dot[i].image.GetWidth() / 2);
+    dot[i].sprite.SetY(cy + radius * Math.Sin(angle) - dot[i].image.GetHeight() / 2);
+}
+
+status_text = Image.Text("hackOS", 1, 1, 1, 1, "Sans 14");
+status_sprite = Sprite(status_text);
+status_sprite.SetX(cx - status_text.GetWidth() / 2);
+status_sprite.SetY(cy + 24);
+
+progress = 0;
+fun refresh_callback() {
+    progress++;
+    active = Math.Int(progress / 6) % dot_count;
+    for (i = 0; i < dot_count; i++) {
+        if (i == active) {
+            dot[i].image = Image.Text("●", 0.918, 0, 0.34, 1, "Sans 10");
+        } else {
+            dot[i].image = Image.Text("●", 1, 1, 1, 0.25, "Sans 10");
+        }
+        dot[i].sprite.SetImage(dot[i].image);
+    }
+}
+Plymouth.SetRefreshFunction(refresh_callback);
+
+fun quit_callback() {
+    Plymouth.SetQuitFunction();
+}
+Plymouth.SetBootProgressFunction(refresh_callback);

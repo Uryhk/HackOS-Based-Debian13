@@ -1,0 +1,21 @@
+# hackOS :: regreet config
+
+[background]
+# Se sobreescribe en tiempo de arranque por hackos-greeter-wallpaper.sh,
+# que elige una imagen al azar de /etc/hackos/theme/wallpapers/
+path = "/etc/hackos/theme/wallpapers/default.jpg"
+fit = "Cover"
+
+[GTK]
+application_prefer_dark_theme = true
+cursor_theme = "Adwaita"
+font = "JetBrainsMono Nerd Font 11"
+icon_theme = "Papirus-Dark"
+theme_name = "Adwaita-dark"
+
+[commands]
+reboot = ["systemctl", "reboot"]
+poweroff = ["systemctl", "poweroff"]
+
+[appearance]
+greeting_msg = "hackOS"

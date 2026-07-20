@@ -1,0 +1,67 @@
+! hackOS :: xterm configurado para comportarse/sentirse como gnome-terminal
+! pero manteniendo el bajísimo consumo de xterm.
+
+xterm*faceName: JetBrainsMono Nerd Font
+xterm*faceSize: 11
+xterm*renderFont: true
+
+xterm*background: #101418
+xterm*foreground: #d6dbe0
+xterm*cursorColor: #EA0057
+xterm*pointerColor: #EA0057
+xterm*pointerColorBackground: #101418
+
+! Paleta 16 colores estilo "hacker" sobrio
+xterm*color0:  #14181b
+xterm*color1:  #ff5555
+xterm*color2:  #2ECC71
+xterm*color3:  #e5c07b
+xterm*color4:  #61afef
+xterm*color5:  #c678dd
+xterm*color6:  #56b6c2
+xterm*color7:  #d6dbe0
+xterm*color8:  #5c6370
+xterm*color9:  #ff6e6e
+xterm*color10: #33e0b0
+xterm*color11: #f0d18f
+xterm*color12: #7cc4f5
+xterm*color13: #d491e6
+xterm*color14: #7ed0da
+xterm*color15: #ffffff
+
+! Transparencia suave (pseudo-transparencia real vía picom)
+xterm*background: [88]#101418
+
+! Scrollbar oculto por defecto, como una terminal moderna
+xterm*scrollBar: false
+xterm*rightScrollBar: false
+xterm*saveLines: 8000
+
+! Comportamiento tipo gnome-terminal
+xterm*metaSendsEscape: true
+xterm*bellIsUrgent: true
+xterm*visualBell: false
+xterm*loginShell: true
+xterm*termName: xterm-256color
+xterm*utf8: 2
+xterm*locale: true
+
+! Selección y copiado más cómodos (doble click selecciona palabra completa,
+! selección con click derecho extiende, como en terminales modernas)
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+
+! Padding interno (respiro visual, como gnome-terminal)
+xterm*internalBorder: 12
+
+! Atajos de teclado tipo gnome-terminal: Ctrl+Shift+C/V para copiar/pegar,
+! Ctrl+Shift+T no aplica (xterm no tiene pestañas nativas, se usa Super+T
+! para abrir una nueva ventana en su lugar)
+xterm*VT100.translations: #override \
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>N: spawn-new-terminal() \n\
+    Ctrl <Key>plus:    larger-vt-font() \n\
+    Ctrl <Key>minus:   smaller-vt-font() \n\
+    Ctrl <Key>0:       set-vt-font(d)
+
+xterm*eightBitInput: false

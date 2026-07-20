@@ -1,0 +1,22 @@
+#!/bin/sh
+# hackOS :: IceWM startup
+
+# Compositor liviano para sombras/transparencias sin costo alto
+picom --config ~/.icewm/picom.conf -b &
+
+# Fondo de pantalla (carpeta intercambiable de wallpapers)
+WALLPAPER_DIR="$HOME/Pictures/hackos-wallpapers"
+if [ -d "$WALLPAPER_DIR" ] && [ "$(ls -A "$WALLPAPER_DIR" 2>/dev/null)" ]; then
+    feh --bg-fill "$(find "$WALLPAPER_DIR" -type f | shuf -n1)" &
+fi
+
+# Applets de bandeja
+nm-applet &
+pasystray &
+volumeicon &
+xfce4-power-manager &
+
+# Notificaciones ligeras
+dunst &
+
+exit 0

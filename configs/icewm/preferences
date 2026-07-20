@@ -1,0 +1,49 @@
+# hackOS :: IceWM preferences
+# Estética "bonita y liviana" + rendimiento en hardware modesto
+
+Theme="hackos"
+ThemeOverride=""
+
+# Fuentes
+DefaultFont="JetBrainsMono Nerd Font:size=10"
+
+# Look general
+ShowTaskBar=1
+TaskBarShowClock=1
+TaskBarShowCPUStatus=0
+TaskBarShowMEMStatus=0
+TaskBarShowNetStatus=0
+TaskBarShowWorkspacesMenu=1
+TaskBarShowStartMenu=1
+TaskBarShowQuickLaunch=1
+TaskBarShowAPMStatus=0
+TaskBarShowTray=1
+
+ClockFormat="%H:%M"
+ClockDateFormat="%d/%m"
+
+# Ventanas
+BorderSizeControl=2
+BorderSizeMovable=2
+BorderSizeNormal=2
+DoubleBorderTitleBar=0
+ShowMoveSizeStatusWindow=1
+OpaqueMove=1
+OpaqueResize=0
+
+# Efectos suaves pero baratos en CPU
+FullscreenMode=1
+AnimateMinimize=0
+DesktopBackgroundCenter=0
+SupportSemitransparency=1
+DesktopTransparencyColor="#0A0A0A"
+
+# Escritorios virtuales
+WorkspaceNames="1 Term,2 Web,3 Code,4 Files,5 Sys"
+WorkspaceCount=5
+
+# Menú
+ShowMenuIcons=1
+MenuIconSize=22
+TaskBarIconSize=22
+

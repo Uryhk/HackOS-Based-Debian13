@@ -1,0 +1,16 @@
+# hackOS IceWM theme — flat, oscuro, minimal
+Look="flat"
+
+# Paleta de marca real (logo): fondo negro puro, borde azul, acento rosa
+ColorActiveTitleBar="#0A0A0A"
+ColorInactiveTitleBar="#141414"
+ColorActiveBorder="#2E9FDB"
+ColorInactiveBorder="#232323"
+ColorNormalMenu="#101010"
+ColorNormalMenuText="#F0F0F0"
+ColorActiveMenuItem="#EA0057"
+ColorActiveMenuItemText="#F0F0F0"
+
+TitleBarHeight=28
+TitleBarFontName="JetBrainsMono Nerd Font:bold:size=10"
+TitleBarJustify=0

@@ -1,0 +1,70 @@
+/* hackOS :: tema regreet — reloj, avatar en globo con degradado de marca,
+   tarjeta translúcida. Paleta extraída de configs/branding/hackos-logo.png */
+
+window {
+    background-color: #0A0A0A;
+}
+
+#clock-label {
+    font-size: 56px;
+    font-weight: 700;
+    color: #F0F0F0;
+    margin-bottom: 4px;
+}
+
+#date-label {
+    font-size: 16px;
+    color: #8A8F98;
+    margin-bottom: 24px;
+}
+
+box#login-box {
+    background-color: rgba(10, 10, 10, 0.80);
+    border-radius: 18px;
+    border: 1px solid rgba(234, 0, 87, 0.35);
+    padding: 32px;
+}
+
+/* Avatar circular con anillo en degradado azul -> rosa, igual que el sombrero del logo */
+image#user-avatar {
+    min-width: 96px;
+    min-height: 96px;
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-image: linear-gradient(#0A0A0A, #0A0A0A),
+                       linear-gradient(135deg, #2E9FDB, #EA0057);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+entry {
+    border-radius: 10px;
+    background-color: #141414;
+    color: #F0F0F0;
+    border: 1px solid #232323;
+    padding: 8px 12px;
+}
+
+entry:focus {
+    border-color: #EA0057;
+}
+
+/* Botón con el mismo degradado azul -> rosa del logo */
+button {
+    border-radius: 10px;
+    background-image: linear-gradient(135deg, #2E9FDB, #EA0057);
+    color: #F0F0F0;
+    font-weight: 700;
+    padding: 8px 16px;
+    border: none;
+}
+
+button:hover {
+    background-image: linear-gradient(135deg, #4CB2E8, #FF1A6E);
+}
+
+combobox, dropdown {
+    color: #F0F0F0;
+    background-color: #141414;
+    border-radius: 8px;
+}
