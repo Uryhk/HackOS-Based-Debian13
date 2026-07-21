@@ -13,6 +13,9 @@
 # Si tu prioridad es el consumo mínimo de ~700MB, instalá este módulo aparte
 # y solo cuando lo vayas a usar; no es parte del set "base" recomendado.
 set -euo pipefail
+HACKOS_DIR="${HACKOS_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+export HACKOS_DIR
+source "$HACKOS_DIR/lib/common.sh"
 
 apt-get install -y --no-install-recommends curl ca-certificates
 

@@ -8,6 +8,7 @@
 # centrado, spinner de puntos.
 set -euo pipefail
 HACKOS_DIR="${HACKOS_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+source "$HACKOS_DIR/lib/common.sh"
 BR="$HACKOS_DIR/configs/branding"
 
 apt-get install -y --no-install-recommends \
@@ -24,7 +25,7 @@ install -Dm644 "$BR/hackos-logo-256.png" /usr/share/pixmaps/hackos.png
 gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
 
 # --- Tema de íconos oscuro por defecto (Papirus-Dark, coherente con el
-#     resto: IceWM/JWM/dwm/i3 quedan livianos, esto es solo el set de
+#     resto: IceWM/JWM/cwm/i3 quedan livianos, esto es solo el set de
 #     íconos que usan pcmanfm/rofi/apps) --------------------------------
 install -d /etc/gtk-3.0
 cat > /etc/gtk-3.0/settings.ini <<'EOF'

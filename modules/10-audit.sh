@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # hackOS :: 10-audit — herramientas de auditoría de seguridad
 set -euo pipefail
+HACKOS_DIR="${HACKOS_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+export HACKOS_DIR
+source "$HACKOS_DIR/lib/common.sh"
 
 apt-get install -y --no-install-recommends \
     lynis rkhunter chkrootkit aide debsums

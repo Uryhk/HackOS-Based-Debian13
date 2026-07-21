@@ -8,6 +8,7 @@
 # (GTK, ~15-20MB de RAM en reposo, pero sí soporta imágenes de verdad).
 set -euo pipefail
 HACKOS_DIR="${HACKOS_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+source "$HACKOS_DIR/lib/common.sh"
 
 apt-get install -y --no-install-recommends greetd cage imagemagick
 

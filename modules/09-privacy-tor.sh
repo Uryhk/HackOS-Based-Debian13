@@ -2,6 +2,7 @@
 # hackOS :: 09-privacy-tor — capa de privacidad estilo Whonix/Kicksecure
 set -euo pipefail
 HACKOS_DIR="${HACKOS_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+source "$HACKOS_DIR/lib/common.sh"
 
 apt-get install -y --no-install-recommends \
     tor torbrowser-launcher torsocks obfs4proxy \

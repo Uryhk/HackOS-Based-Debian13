@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <JWM>
 
-    <!-- hackOS :: JWM config — coherente en estética/keybinds con IceWM -->
+    <!-- hackOS: JWM config, coherente en estetica/keybinds con el resto -->
 
     <RootMenu height="28" onroot="12">
-        <Program icon="terminal" label="Terminal">xterm</Program>
+        <Program icon="terminal" label="Terminal">sakura</Program>
         <Program icon="folder" label="Archivos">pcmanfm</Program>
-        <Program icon="web-browser" label="Navegador">librewolf</Program>
+        <Program icon="web-browser" label="Navegador">__HACKOS_BROWSER__</Program>
         <Program icon="accessories-text-editor" label="Editor">pluma</Program>
         <Separator/>
         <Program icon="system-search" label="Lanzador (rofi)">rofi -show drun</Program>
@@ -14,12 +14,6 @@
         <Restart label="Reiniciar JWM" icon="restart"/>
         <Exit label="Cerrar sesion" icon="logout" confirm="true"/>
     </RootMenu>
-
-    <Group>
-        <Class>*</Class>
-        <Option>Border</Option>
-        <Option>Title</Option>
-    </Group>
 
     <TrayStyle>
         <Font>JetBrainsMono Nerd Font:size=10</Font>
@@ -32,27 +26,28 @@
         <Width>2</Width>
         <Height>26</Height>
         <Active>
-            <Text>#0b0e10</Text>
             <Foreground>#EA0057</Foreground>
             <Background>#101418</Background>
         </Active>
-        <Inactive>
-            <Text>#8a9099</Text>
-            <Foreground>#8a9099</Foreground>
-            <Background>#181c20</Background>
-        </Inactive>
+        <Foreground>#8a9099</Foreground>
+        <Background>#181c20</Background>
     </WindowStyle>
 
     <Tray x="0" y="-1" height="30" autohide="off">
-        <TrayButton icon="jwm">Menu</TrayButton>
+        <TrayButton icon="jwm">root:1</TrayButton>
         <Pager labeled="true"/>
         <TaskList maxwidth="200"/>
         <Dock/>
-        <Clock format="%H:%M %d/%m">xclock</Clock>
+        <Clock format="%H:%M %d/%m"/>
     </Tray>
 
     <Desktops width="5" height="1">
         <Background type="solid">#0b0e10</Background>
+        <Desktop name="Term"/>
+        <Desktop name="Web"/>
+        <Desktop name="Code"/>
+        <Desktop name="Files"/>
+        <Desktop name="Sys"/>
     </Desktops>
 
     <DoubleClickSpeed>400</DoubleClickSpeed>
@@ -62,29 +57,24 @@
     <MoveMode>opaque</MoveMode>
     <ResizeMode>opaque</ResizeMode>
 
-    <StartupCommand>picom -b --config ~/.icewm/picom.conf</StartupCommand>
+    <StartupCommand>picom -b --config ~/.config/picom/picom.conf</StartupCommand>
+    <StartupCommand>dunst</StartupCommand>
     <StartupCommand>nm-applet</StartupCommand>
     <StartupCommand>feh --bg-fill --randomize ~/Pictures/hackos-wallpapers/*</StartupCommand>
 
-    <!-- Atajos: Super+T abre terminal, igual que en IceWM/dwm/i3 -->
-    <Key key="Super-t">exec:xterm</Key>
-    <Key key="Super-Return">exec:xterm</Key>
-    <Key key="Super-e">exec:pcmanfm</Key>
-    <Key key="Super-d">exec:rofi -show drun</Key>
-    <Key key="Super-space">exec:rofi -show run</Key>
-    <Key key="Super-q">close</Key>
-    <Key key="Super-f">maximize</Key>
-    <Key key="Super-Shift-q">exit:</Key>
-    <Key key="Alt-Tab">next:</Key>
-    <Key key="Super-Left">ldesktop:</Key>
-    <Key key="Super-Right">rdesktop:</Key>
-
-    <VirtualDesktops>
-        <Desktop name="Term"/>
-        <Desktop name="Web"/>
-        <Desktop name="Code"/>
-        <Desktop name="Files"/>
-        <Desktop name="Sys"/>
-    </VirtualDesktops>
+    <!-- Atajos: mask="4" = tecla Super/Windows (mod4), confirmado con jwm -p -->
+    <Key mask="4" key="t">exec:sakura</Key>
+    <Key mask="4" key="Return">exec:sakura</Key>
+    <Key mask="4" key="e">exec:pcmanfm</Key>
+    <Key mask="4" key="w">exec:__HACKOS_BROWSER__</Key>
+    <Key mask="4" key="c">exec:pluma</Key>
+    <Key mask="4" key="d">exec:rofi -show drun</Key>
+    <Key mask="4" key="space">exec:rofi -show run</Key>
+    <Key mask="4" key="q">close</Key>
+    <Key mask="4" key="f">maximize</Key>
+    <Key mask="4S" key="q">exit</Key>
+    <Key mask="A" key="Tab">next</Key>
+    <Key mask="4" key="Left">ldesktop</Key>
+    <Key mask="4" key="Right">rdesktop</Key>
 
 </JWM>

@@ -4,15 +4,15 @@ set $mod Mod4
 font pango:JetBrainsMono Nerd Font 10
 
 # --- Apps -------------------------------------------------------------
-bindsym $mod+t exec xterm
-bindsym $mod+Return exec xterm
+bindsym $mod+t exec sakura
+bindsym $mod+Return exec sakura
 bindsym $mod+e exec pcmanfm
-bindsym $mod+w exec librewolf
+bindsym $mod+w exec __HACKOS_BROWSER__
 bindsym $mod+c exec pluma
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+space exec rofi -show run
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+Shift+l exec xtrlock
+bindsym Control+Mod1+l exec xtrlock
 
 # --- Ventanas -----------------------------------------------------------
 bindsym $mod+Shift+q kill
@@ -29,8 +29,8 @@ bindsym $mod+Shift+l move right
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+w layout tabbed
+# (layout toggle split se cubre con $mod+h / $mod+v, no hace falta otro atajo)
 
 # --- Workspaces -----------------------------------------------------------
 set $ws1 "1:Term"
@@ -82,7 +82,7 @@ bar {
 }
 
 # --- Autoinicio -------------------------------------------------------
-exec --no-startup-id picom -b --config ~/.icewm/picom.conf
+exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --bg-fill --randomize ~/Pictures/hackos-wallpapers/*
 exec --no-startup-id pasystray

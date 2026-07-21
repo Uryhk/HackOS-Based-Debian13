@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # hackOS :: 01-base — sistema base, kernel endurecido, hardening general
 set -euo pipefail
+HACKOS_DIR="${HACKOS_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+export HACKOS_DIR
+source "$HACKOS_DIR/lib/common.sh"
 
 apt-get update -qq
 apt-get install -y --no-install-recommends \

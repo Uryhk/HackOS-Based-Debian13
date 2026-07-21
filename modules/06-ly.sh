@@ -11,6 +11,7 @@
 #   sudo bash modules/06b-regreet-avatar.sh
 set -euo pipefail
 HACKOS_DIR="${HACKOS_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+source "$HACKOS_DIR/lib/common.sh"
 
 apt-get install -y --no-install-recommends build-essential git libpam0g-dev libxcb-xkb-dev pkg-config
 

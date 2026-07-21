@@ -1,0 +1,86 @@
+# hackOS :: cwmrc — cwm (Calm Window Manager) de OpenBSD
+#
+# cwm no dibuja decoraciones ni tiene barra/tray propios (a diferencia de
+# IceWM/JWM/i3): es deliberadamente minimalista, solo un borde fino por
+# ventana. Sintaxis verificada contra cwmrc(5) de Debian trixie (cwm 7.1-1) —
+# los nombres de función son estrictos, cwm ignora silenciosamente (o tira
+# error en stderr) cualquier directiva que no exista, así que se
+# comprobaron uno por uno contra el manual oficial antes de escribir esto.
+
+fontname "JetBrainsMono Nerd Font:pixelsize=12"
+
+# Apariencia (paleta de marca hackOS: negro casi puro, rosa activo, azul)
+borderwidth 2
+color activeborder   "#EA0057"
+color inactiveborder "#2a2f34"
+color urgencyborder  "#ff5555"
+color groupborder    "#2E9FDB"
+color ungroupborder  "#2a2f34"
+color menubg         "#0A0A0A"
+color menufg         "#F0F0F0"
+color font            "#F0F0F0"
+color selfont          "#EA0057"
+
+# Comportamiento
+snapdist 10
+moveamount 10
+sticky yes
+
+# 'term' y 'lock' son nombres especiales: apuntan a lo que abren las
+# funciones 'terminal' y 'lock' de la lista de bind. __HACKOS_BROWSER__ lo
+# reemplaza el módulo 04-wm-cwm.sh según lo que elegiste en el instalador.
+command term  sakura
+command lock  xtrlock
+command files pcmanfm
+command web   __HACKOS_BROWSER__
+command edit  pluma
+command rofi  "rofi -show drun"
+
+# Ignorar (no dibujar borde / no ciclar) algunas ventanas típicas
+ignore xclock
+
+# --- Atajos de teclado -----------------------------------------------------
+# Notación cwm: C=Control, M=Alt(Meta), S=Shift, 4=Super/Windows.
+# Super+T y Super+Return abren terminal (sakura, definido arriba en 'term')
+bind-key 4-Return   terminal
+bind-key 4-t         "sakura"
+bind-key 4-e          "pcmanfm"
+bind-key 4-w           "__HACKOS_BROWSER__"
+bind-key 4-c            "pluma"
+bind-key 4-d             "rofi -show drun"
+bind-key 4-space          "rofi -show run"
+
+# Ventanas
+bind-key 4-q    window-close
+bind-key 4-f     window-fullscreen
+bind-key 4-m      window-maximize
+bind-key 4-h       window-hide
+bind-key 4-Tab      window-cycle
+bind-key 4S-Tab      window-rcycle
+bind-key 4C-Tab       window-cycle-ingroup
+
+# Grupos (cwm no permite nombrarlos, solo son 1-9 — a diferencia de
+# IceWM/JWM/i3 que sí muestran nombres tipo "Term/Web/Code")
+bind-key 4-1   group-only-1
+bind-key 4-2    group-only-2
+bind-key 4-3     group-only-3
+bind-key 4-4      group-only-4
+bind-key 4-5       group-only-5
+bind-key 4S-1  window-movetogroup-1
+bind-key 4S-2   window-movetogroup-2
+bind-key 4S-3    window-movetogroup-3
+bind-key 4S-4     window-movetogroup-4
+bind-key 4S-5      window-movetogroup-5
+
+# Bloqueo de pantalla y salida
+bind-key CM-l   lock
+bind-key 4S-q    quit
+
+# Mouse: Super+click izquierdo mueve, Super+click derecho redimensiona
+bind-mouse 4-1 window-move
+bind-mouse 4-3 window-resize
+
+# Menú de cambio de WM sin cerrar sesión (útil para probar los otros)
+wm "IceWM" "icewm-session"
+wm "JWM"   "jwm"
+wm "i3"    "i3"

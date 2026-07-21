@@ -2,6 +2,7 @@
 # hackOS :: 11-fastfetch — fastfetch personalizado con logo/branding hackOS
 set -euo pipefail
 HACKOS_DIR="${HACKOS_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+source "$HACKOS_DIR/lib/common.sh"
 
 apt-get install -y --no-install-recommends fastfetch
 

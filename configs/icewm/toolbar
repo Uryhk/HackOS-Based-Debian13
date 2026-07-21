@@ -1,7 +1,8 @@
 # hackOS :: IceWM quick-launch toolbar
-prog "Terminal" utilities-terminal xterm
+# __HACKOS_BROWSER__ lo reemplaza 02-wm-icewm.sh segun lo elegido en el instalador.
+prog "Terminal" utilities-terminal sakura
 prog "Files" system-file-manager pcmanfm
-prog "Browser" web-browser librewolf
+prog "Browser" web-browser __HACKOS_BROWSER__
 prog "Editor" accessories-text-editor pluma
 prog "Rofi" system-search rofi -show drun
 prog "Tor Browser" security-high torbrowser-launcher
